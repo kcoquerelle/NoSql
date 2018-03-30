@@ -25,7 +25,7 @@ db.incidents.aggregate([{$match:{"fields.localisation": /Paris/}},{$group:{_id:"
 db.incidents.aggregate([{$group:{_id:"$fields.localisation", nbIncidents:{$sum:1}}},{$sort:{nbIncidents:-1}},{$limit:10}])
 
 //Nombre d’incidents mortels
-db.incidents.find({$or:[{"fields.commentaires":/mort/},{"fields.commentaires":/suicide/},{"fields.Commentaires":/décè/},{"fields.commentaires":/décéd/}]}, {"fields.date":1,"fields.localisation":1}).count()
+db.incidents.find({$or:[{"fields.commentaires":/mort/},{"fields.commentaires":/suicide/},{"fields.Commentaires":/décè/},{"fields.commentaires":/décéd/}]}).count()
 
 //Nombre d’incidents à Paris
 db.incidents.aggregate([{$match:{"fields.localisation": /Paris/}},{$group:{_id:"Paris", nbIncidents:{$sum:1}}}])
